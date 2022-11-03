@@ -1,0 +1,26 @@
+{
+  "name": "dwa-exercise-five",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgk5543/dwa-exercise-five.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgk5543/dwa-exercise-five/issues"
+  },
+  "homepage": "https://github.com/mgk5543/dwa-exercise-five#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
