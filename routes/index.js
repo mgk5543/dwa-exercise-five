@@ -9,7 +9,7 @@ router.use((req, res, next) => {
 
 //define the index route
 router.get('/', (req, res) => {
-    res.send('Wow!')
+    res.send('Wow! This is working! aMANUJnbdkuwabhdk')
 })
 
 module.exports = router
