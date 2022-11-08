@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/mgk5543/dwa-exercise-five#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "firebase": "^9.13.0"
   },
   "engines": {
     "node": "16.14.0"
