@@ -10,11 +10,11 @@ const createPostForm = `
 <form action="/create/submit">
     <div style="display: flex; flex-direction: column; max-width: 400px; margin: 10px;">
         <label for="title">Title</label>
-        <input type="text" name="title" placeholder="Title" style="margin-bottom: 20px;"/>
+        <input type="text" name="postTitle" placeholder="Title" style="margin-bottom: 20px;"/>
         <label for="text">Text</label>
-        <input type="text" name="text" placeholder="Text" style="margin-bottom: 20px;"/>
+        <input type="text" name="postText" placeholder="Text" style="margin-bottom: 20px;"/>
         <label for="author">Author</label>
-        <input type="text" name="author" placeholder="Author" style="margin-bottom: 20px;"/>
+        <input type="text" name="postAuthor" placeholder="Author" style="margin-bottom: 20px;"/>
         <button type="submit">Submit</button>
     </div>
 </form>
@@ -31,7 +31,37 @@ router.get("/", (req, res) => {
 })
 
 router.get("/submit", (req, res) => {
-    res.send('hi')
+    const queryParams = req.query //Query params from URL
+    const title = queryParams.postTitle
+    const text = queryParams.postText
+    const author = queryParams.postAuthor
+    //Create ID from title
+    const idFromTitle = title.replace(/\s+/g, "-").toLowerCase()
+
+    //Submit post to firebase
+    const setBlogPost = firestore.setDoc(
+        firestore.doc(db, "posts", idFromTitle),
+        {
+            title: title, 
+            text: text, 
+            author: author,
+        }
+    )
+
+    setBlogPost
+        .then((response) => {
+            //if successful, send correct message
+            console.log(response)
+            res.send(`
+            <h1>Submission Successful!</h1>
+            <p><a href="/create">Create New Post</a></p>
+            <p><a href="/">Return Home</a></p>
+            `)
+        })
+        .catch((error) => {
+            console.warn(error)
+            res.send(`Error submitting:  ${error.toString()}`)
+        })
 })
 
 module.exports = router;
