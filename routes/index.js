@@ -11,6 +11,7 @@ router.use((req, res, next) => {
     next()
 })
 
+
 //define the index route
 router.get('/', (req, res) => {
     const postsQuery = firestore.getDocs(firestore.collection(db, "posts"))
